@@ -1,7 +1,8 @@
 import tkinter as tk
 import customtkinter as ctk
 
-# Constants
+# ----------------------------------------------- Constants -------------------------------------------------- #
+
 FONT_NAME = "Arial"
 GREEN = "#6ab04c"
 RED = "#e7305b"
@@ -11,13 +12,15 @@ SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
 REPS = 0
 
-# Variables
+# ----------------------------------------------- Variables -------------------------------------------------- #
+
 timer = None
 marks = ""
 
 
-# Functions
-def start_timer():
+# ----------------------------------------------- Functions -------------------------------------------------- #
+
+def start_timer(): # start timer from 25:00, new session 
     global REPS, marks
     REPS += 1
     work_sec = WORK_MIN * 60
@@ -36,7 +39,7 @@ def start_timer():
     check_mark.configure(text=marks)
 
 
-def reset_timer():
+def reset_timer(): # reset timer to 00:00
     global REPS, timer, marks
     REPS = 0
     marks = ""
@@ -59,7 +62,7 @@ def count_down(count):
         start_timer()
 
 
-# UI Setup
+# ----------------------------------------------- UI Setup --------------------------------------------------- #
 window = ctk.CTk()
 window.title("POMODORO")
 window.config(padx=10, pady=10)
