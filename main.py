@@ -25,7 +25,7 @@ def start_timer():
     long_break_sec = LONG_BREAK_MIN * 60
     if REPS % 8 == 0:
         count_down(long_break_sec)
-        TIMER_LABEL.config(text="BREAK", text_color=PINK)
+        TIMER_LABEL.configure(text="BREAK", text_color=PINK)
     elif REPS % 2 == 0:
         count_down(short_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=RED)
