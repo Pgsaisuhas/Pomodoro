@@ -1,5 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
+import notification
 
 # ----------------------------------------------- Constants -------------------------------------------------- #
 
@@ -7,9 +8,9 @@ FONT_NAME = "Arial"
 GREEN = "#6ab04c"
 RED = "#e7305b"
 PINK = "#f7a8b8"
-WORK_MIN = 1
-SHORT_BREAK_MIN = 1
-LONG_BREAK_MIN = 20
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 30
 REPS = 0
 
 # ----------------------------------------------- Variables -------------------------------------------------- #
@@ -20,26 +21,29 @@ marks = ""
 
 # ----------------------------------------------- Functions -------------------------------------------------- #
 
-def start_timer(): # start timer from 25:00, new session 
+def start_timer():  # start timer from 25:00, new session
     global REPS, marks
     REPS += 1
-    work_sec = WORK_MIN * 60
-    short_break_sec = SHORT_BREAK_MIN * 60
-    long_break_sec = LONG_BREAK_MIN * 60
+    work_sec = WORK_MIN * 10
+    short_break_sec = SHORT_BREAK_MIN * 5
+    long_break_sec = LONG_BREAK_MIN * 30
     if REPS % 8 == 0:
         count_down(long_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=PINK)
+        notification.notify_long()
     elif REPS % 2 == 0:
         count_down(short_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=RED)
+        notification.notify_short()
     else:
         count_down(work_sec)
         TIMER_LABEL.configure(text="WORK", text_color=GREEN)
+        notification.notify_work()
     marks = "✔" * (REPS // 2)
     check_mark.configure(text=marks)
 
 
-def reset_timer(): # reset timer to 00:00
+def reset_timer():  # reset timer to 00:00
     global REPS, timer, marks
     REPS = 0
     marks = ""
