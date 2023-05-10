@@ -24,9 +24,9 @@ marks = ""
 def start_timer():  # start timer from 25:00, new session
     global REPS, marks
     REPS += 1
-    work_sec = WORK_MIN * 10
-    short_break_sec = SHORT_BREAK_MIN * 5
-    long_break_sec = LONG_BREAK_MIN * 30
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
     if REPS % 8 == 0:
         count_down(long_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=PINK)
