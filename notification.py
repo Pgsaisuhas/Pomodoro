@@ -27,4 +27,10 @@ def notify_long():
     toast.set_audio(audio.LoopingCall, loop=True)
     toast.show()
 
-
+def notify_over():
+    toast = Notification(app_id="PMODORO",
+                         title="One session of your pomogranate overrrr!!!!!",
+                         msg="Now fuck off",
+                         icon=r"C:\Users\Harshitha\PycharmProjects\Pomodoro\tomato.png")
+    toast.set_audio(audio.LoopingCall, loop=True)
+    toast.show()
