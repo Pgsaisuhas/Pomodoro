@@ -29,18 +29,29 @@ def start_timer():  # start timer from 25:00, new session
     long_break_sec = LONG_BREAK_MIN * 60
     if REPS % 8 == 0:
         count_down(long_break_sec)
-        TIMER_LABEL.configure(text="BREAK", text_color=PINK)
+        TIMER_LABEL.configure(text="LONG BREAK", text_color=PINK)
+        marks = "✔️" * (REPS // 2)
+        check_mark.configure(text=marks)
         notification.notify_long()
     elif REPS % 2 == 0:
         count_down(short_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=RED)
+        marks = "✔️" * (REPS // 2)
+        check_mark.configure(text=marks)
         notification.notify_short()
     else:
         count_down(work_sec)
         TIMER_LABEL.configure(text="WORK", text_color=GREEN)
         notification.notify_work()
-    marks = "✔" * (REPS // 2)
-    check_mark.configure(text=marks)
+
+    if REPS == 9:
+        # marks = "💫💫💫💫"
+        # check_mark.configure(text=marks)
+        reset_timer()
+        marks = "💫  " 
+        check_mark.configure(text=marks)
+        notification.notify_over()
+        TIMER_LABEL.configure(text="COMPLETE", text_color=RED)
 
 
 def reset_timer():  # reset timer to 00:00
