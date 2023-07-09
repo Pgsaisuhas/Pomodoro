@@ -27,4 +27,12 @@ def notify_long():
     toast.set_audio(audio.LoopingCall, loop=True)
     toast.show()
 
+def notify_one_session():
+    toast = Notification(app_id="PMODORO",
+                         title="One Pomodoro done!",
+                         msg="click on start for another session",
+                         icon=r"C:\Users\Harshitha\PycharmProjects\Pomodoro\tomato.png")
+    toast.set_audio(audio.LoopingCall, loop=True)
+    toast.show()
+
 

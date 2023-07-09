@@ -8,9 +8,9 @@ FONT_NAME = "Arial"
 GREEN = "#6ab04c"
 RED = "#e7305b"
 PINK = "#f7a8b8"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 30
+WORK_MIN = 5
+SHORT_BREAK_MIN = 2
+LONG_BREAK_MIN = 10
 REPS = 0
 
 # ----------------------------------------------- Variables -------------------------------------------------- #
@@ -24,9 +24,9 @@ marks = ""
 def start_timer():  # start timer from 25:00, new session
     global REPS, marks
     REPS += 1
-    work_sec = WORK_MIN * 60
-    short_break_sec = SHORT_BREAK_MIN * 60
-    long_break_sec = LONG_BREAK_MIN * 60
+    work_sec = WORK_MIN * 1
+    short_break_sec = SHORT_BREAK_MIN * 1
+    long_break_sec = LONG_BREAK_MIN * 2
     if REPS % 8 == 0:
         count_down(long_break_sec)
         TIMER_LABEL.configure(text="BREAK", text_color=PINK)
@@ -39,9 +39,14 @@ def start_timer():  # start timer from 25:00, new session
         count_down(work_sec)
         TIMER_LABEL.configure(text="WORK", text_color=GREEN)
         notification.notify_work()
+
     marks = "✔" * (REPS // 2)
     check_mark.configure(text=marks)
 
+    if REPS == 9:
+        notification.notify_one_session()
+        reset_timer()
+        check_mark.configure(text="💫")
 
 def reset_timer():  # reset timer to 00:00
     global REPS, timer, marks
