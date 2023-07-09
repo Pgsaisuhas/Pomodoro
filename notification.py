@@ -34,5 +34,3 @@ def notify_one_session():
                          icon=r"C:\Users\Harshitha\PycharmProjects\Pomodoro\tomato.png")
     toast.set_audio(audio.LoopingCall, loop=True)
     toast.show()
-
-
